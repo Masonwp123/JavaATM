@@ -9,7 +9,7 @@ String menu()
 void start()
 ```
 
-### class CheckingsAccount implements IHasMenu
+### public class CheckingsAccount implements IHasMenu
 ```
 CheckingsAccount()
 CheckingsAccount(double balance)
@@ -137,7 +137,17 @@ double makeWithdrawal():
     call checkBalance()
 ```
 
-### class SavingsAccount extends CheckingsAcount
+### public class SavingsAccount extends CheckingsAcount
+
+**SavingsAccount() && SavingsAccount(double balance)**
+```
+SavingsAccount(double balance):
+    CheckingsAccount(balance)
+
+# default balance is always 0.0
+SavingsAccount():
+    SavingsAccount(0.0)
+```
 
 **main**
 ```
@@ -167,3 +177,40 @@ void getInterestRate():
 ```
 
 ### public abstract class AbstractUser implements IHasMenu
+
+**login**
+```
+boolean login(String userName, String PIN):
+    if userName equals this.userName and PIN equals this.PIN:
+        print "Login Successful!"
+        return true
+    return false
+```
+
+**getUserName**
+```
+String getUserName():
+    return userName
+```
+
+**setUserName**
+```
+void setUserName(userName):
+    this.userName = userName
+```
+
+**getPIN**
+```
+String getPIN():
+    return PIN
+```
+
+**setPIN**
+```
+void setPIN(PIN):
+    this.PIN = PIN
+```
+
+**abstract getReport**
+
+### public class Customer extends AbstractUser

@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.function.Supplier;
 
-class CheckingsAccount implements IHasMenu {
+public class CheckingsAccount implements IHasMenu {
 
     private double balance;
 

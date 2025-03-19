@@ -1,6 +1,6 @@
 import java.util.*;
 
-class SavingsAccount extends CheckingsAccount {
+public class SavingsAccount extends CheckingsAccount {
 
     private double interestRate;
 
