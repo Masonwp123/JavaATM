@@ -13,7 +13,7 @@ void start()
 ```
 CheckingsAccount()
 CheckingsAccount(double balance)
-void main(string[] args)
+static void main(string[] args)
 
 # begin IHasMenu implementation
 String menu()
@@ -30,7 +30,7 @@ private double getDouble()
 
 # modifiers
 
-void makeDeposit(double deposit)
+void makeDeposit()
 double makeWithdrawal()
 ====================
 double balance
@@ -48,8 +48,9 @@ CheckingsAccount():
 
 **main**
 ```
-void main(String args[]):
-    new CheckingsAccount()
+public static void main(String[] args):
+    Account = new CheckingsAccount()
+    call Account.start()
 ```
 
 **menu**
@@ -81,6 +82,10 @@ String getBalanceString():
 **setBalance**
 ```
 void setBalance(double balance):
+    if (balance < 0.0):
+        print "Balance cannot be negative"
+        return
+
     this.balance = balance
     call checkBalance()
 ```
@@ -95,24 +100,67 @@ void checkBalance():
 ```
 # test function
 private double getDouble():
-    return 0.0
+    return get double input with exception handling
 ```
 
 **makeDeposit**
 ```
-void makeDeposit(double deposit):
+void makeDeposit():
+
+    depositString = input as string
+    deposit = convert depositString to double
+
+    if deposit is negative:
+        print "Deposit cannot be negative."
+        return;
+
     add deposit to balance
-    print "deposit of $" + deposit as string + " made."
+    print "deposit of $" + depositString + " made."
     call checkBalance()
 ```
 
 **makeWithdrawal**
 ```
-double makeWithdrawal(double withdrawal):
-    remove withdrawal from balance
-    if balance is negative:
+double makeWithdrawal():
+
+    withdrawalString = input as string
+    withdrawal = convert withdrawalString to double
+
+    if withdrawal is greater than balance:
         print "not enough money in account, please try again."
         return
-    print "withdrawal of $" + withdrawal as string + " made."
+    else if withdrawal is less than 0:
+        print "withdrawal cannot be negative."
+        return
+    remove withdrawal from balance
+    print "withdrawal of $" + withdrawalString + " made."
     call checkBalance()
+```
+
+### class SavingsAccount extends CheckingsAcount
+
+**main**
+```
+public static void main(String[] args):
+    Account = new SavingsAccount()
+    call Account.start()
+```
+
+**calcInterest**
+```
+# Interest Rate should be as a decimal, so adding one will apply the original balance
+void calcInterest():
+    setBalance(getBalance() * InterestRate + 1)
+```
+
+**setInterestRate**
+```
+void setInterestRate(double Rate):
+    interestRate = Rate
+```
+
+**getInterestRate**
+```
+double getInterestRate():
+    return interestRate
 ```
