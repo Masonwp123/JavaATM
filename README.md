@@ -56,15 +56,32 @@ public static void main(String[] args):
 **menu**
 ```
 String main():
+    print "Checkings Account"
     print empty line
     print "0) Exit"
-    print "1) Do things"
+    print "1) Check Balance"
+    print "2) Make Deposit"
+    print "3) Make Withdrawal"
+    print empty line
+    print "Action (0-3): "
+
+    return input as string
 ```
 
 **start**
 ```
 void start():
-    print "hello"
+    keepGoing = true
+    while keepGoing:
+        String response = call menu()
+        if response is "0":
+            keepGoing = false
+        else if reponse is "1":
+            call checkBalance()
+        else if response is "2":
+            call makeDeposit()
+        else if response is "3":
+            call makeWithdrawal()
 ```
 
 **getBalance**
@@ -214,3 +231,52 @@ void setPIN(PIN):
 **abstract getReport**
 
 ### public class Customer extends AbstractUser
+
+**Customer**
+```
+```
+
+**main**
+```
+public static void main(String[] args):
+    customer = new Customer()
+    call customer.start()
+```
+
+**menu**
+```
+print "Checkings Account"
+    print empty line
+    print "0) Exit"
+    print "1) Change PIN"
+    print "2) View Checkings Account"
+    print "3) View Savings Account"
+    print empty line
+    print "Action (0-3): "
+
+    return input as string
+```
+
+**start**
+```
+void start():
+    keepGoing = true
+    while keepGoing:
+        String response = call menu()
+        if response is "0":
+            keepGoing = false
+        else if reponse is "1":
+            call changePIN()
+        else if reponse is "2":
+            call checkingsAccount.start()
+        else if response is "3":
+            call savingsAccount.start()
+```
+
+**changePIN**
+```
+```
+
+**getReport**
+```
+```

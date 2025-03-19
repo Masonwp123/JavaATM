@@ -5,11 +5,11 @@ public class CheckingsAccount implements IHasMenu {
 
     private double balance;
 
-    CheckingsAccount() {
+    public CheckingsAccount() {
         this(0.0);
     }
 
-    CheckingsAccount(double initialBalance) {
+    public CheckingsAccount(double initialBalance) {
         this.balance = initialBalance;
     }
 
@@ -21,6 +21,9 @@ public class CheckingsAccount implements IHasMenu {
     // begin IHasMenu implementation
 
     public String menu() {
+
+        printSeparator();
+        
         System.out.println("Checkings Account");
         System.out.println();
         System.out.println("0) Exit");

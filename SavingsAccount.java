@@ -4,11 +4,11 @@ public class SavingsAccount extends CheckingsAccount {
 
     private double interestRate;
 
-    SavingsAccount() {
+    public SavingsAccount() {
         this(0.0);
     }
 
-    SavingsAccount(double initialBalance) {
+    public SavingsAccount(double initialBalance) {
         super(initialBalance);
     }
 
@@ -48,7 +48,10 @@ public class SavingsAccount extends CheckingsAccount {
 
     //test implementation
     public String menu() {
-        System.out.println("Checkings Account");
+
+        printSeparator();
+
+        System.out.println("Savings Account");
         System.out.println();
         System.out.println("0) Exit");
         System.out.println("1) Check Balance");
