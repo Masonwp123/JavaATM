@@ -165,3 +165,5 @@ void setInterestRate():
 void getInterestRate():
     print interestRate as string
 ```
+
+### public abstract class AbstractUser implements IHasMenu

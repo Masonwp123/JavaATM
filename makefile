@@ -1,8 +1,8 @@
-Customer.class: Customer.java User.class CheckingsAccount.class SavingsAccount.class
+Customer.class: Customer.java AbstractUser.class CheckingsAccount.class SavingsAccount.class
 	javac -g Customer.java
 
-User.class: User.java IHasMenu.class
-	javac -g User.java
+AbstractUser.class: AbstractUser.java IHasMenu.class
+	javac -g AbstractUser.java
 
 CheckingsAccount.class: CheckingsAccount.java IHasMenu.class
 	javac -g CheckingsAccount.java
