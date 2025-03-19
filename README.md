@@ -155,12 +155,13 @@ void calcInterest():
 
 **setInterestRate**
 ```
-void setInterestRate(double Rate):
-    interestRate = Rate
+void setInterestRate():
+    rate = getDouble()
+    interestRate = rate
 ```
 
 **getInterestRate**
 ```
-double getInterestRate():
-    return interestRate
+void getInterestRate():
+    print interestRate as string
 ```
