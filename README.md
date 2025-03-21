@@ -232,10 +232,6 @@ void setPIN(PIN):
 
 ### public class Customer extends AbstractUser
 
-**Customer**
-```
-```
-
 **main**
 ```
 public static void main(String[] args):
@@ -275,6 +271,11 @@ void start():
 
 **changePIN**
 ```
+void changePIN():
+    prompt user to change pin
+    check if pin is 4 numberic digits
+    tell user pin was set successfully
+    call setPIN(PIN)
 ```
 
 **getReport**
