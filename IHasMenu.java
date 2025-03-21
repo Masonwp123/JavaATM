@@ -26,6 +26,7 @@ interface IHasMenu {
 
     default void printError(String message) {
         printSeparator();
+        System.out.print("ERROR: ");
         System.out.println(message);
         waitForNextInput();
     }

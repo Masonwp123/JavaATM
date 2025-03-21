@@ -58,9 +58,21 @@ public class Customer extends AbstractUser {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter a new PIN: ");
+        System.out.print("Enter a new PIN (0 to cancel): ");
 
         String PIN = input.nextLine();
+
+        //cancel PIN change
+        if (PIN.equals("0")) {
+            return;
+        }
+
+        //if PIN is not 4 numbers, tell user and re-prompt
+        if (!PIN.matches("^\\d{4}$")) {
+            printError("PIN must be 4 numberic digits.");
+            changePIN();
+            return;
+        }
 
         printSeparator();
 
