@@ -5,6 +5,15 @@ public abstract class AbstractUser implements IHasMenu {
     private String userName;
     private String PIN;
 
+    public AbstractUser(String userName, String PIN) {
+        this.userName = userName;
+        this.PIN = PIN;
+    }
+
+    public AbstractUser() {
+        this("NULL", "0000");
+    }
+
     public boolean login(String userName, String PIN) {
         if (this.userName == userName && this.PIN == PIN) {
             System.out.println("Login Successful.");

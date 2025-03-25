@@ -10,31 +10,6 @@ void start()
 ```
 
 ### public class CheckingsAccount implements IHasMenu
-```
-CheckingsAccount()
-CheckingsAccount(double balance)
-static void main(string[] args)
-
-# begin IHasMenu implementation
-String menu()
-void start()
-# end IHasMenu implementation
-
-# balance functions
-
-double getBalance()
-String getBalanceString()
-void setBalance(double balance)
-void checkBalance()
-private double getDouble()
-
-# modifiers
-
-void makeDeposit()
-double makeWithdrawal()
-====================
-double balance
-```
 
 **CheckingsAccount() && CheckingsAccount(double balance)**
 ```
@@ -194,6 +169,17 @@ void getInterestRate():
 ```
 
 ### public abstract class AbstractUser implements IHasMenu
+
+**AbstractUser() && AbstractUser(String userName, String PIN)**
+```
+AbstractUser(String userName, String PIN):
+    this.userName = userName
+    this.PIN = PIN
+
+# default PIN is always 0000
+AbstractUser():
+    AbstractUser("NULL", "0000")
+```
 
 **login**
 ```

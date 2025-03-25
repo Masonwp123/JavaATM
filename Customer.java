@@ -6,6 +6,7 @@ public class Customer extends AbstractUser {
     private final SavingsAccount savingsAccount = new SavingsAccount();
 
     public Customer() {
+        super("Alice", "0000");
     }
 
     public static void main(String[] args) {
@@ -19,7 +20,7 @@ public class Customer extends AbstractUser {
 
         printSeparator();
 
-        System.out.println("Customer");
+        System.out.println("Welcome " + getUserName() + "!");
         System.out.println();
         System.out.println("0) Exit");
         System.out.println("1) Change PIN");
