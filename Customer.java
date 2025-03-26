@@ -1,14 +1,15 @@
 import java.util.*;
+import java.io.*;
 
-public class Customer extends AbstractUser {
+public class Customer extends AbstractUser implements Serializable {
 
     private final CheckingsAccount checkingsAccount;
     private final SavingsAccount savingsAccount;
 
     public Customer(String userName, String PIN) {
         super(userName, PIN);
-        checkingsAccount = new CheckingsAccount();
-        savingsAccount = new SavingsAccount();
+        this.checkingsAccount = new CheckingsAccount();
+        this.savingsAccount = new SavingsAccount();
     }
 
     public Customer() {
@@ -59,11 +60,11 @@ public class Customer extends AbstractUser {
             if (reponse.equals("0")) {
                 keepGoing = false;
             } else if (reponse.equals("1")) {
-                changePIN();
+                this.changePIN();
             } else if (reponse.equals("2")) {
-                checkingsAccount.start();
+                this.checkingsAccount.start();
             } else if (reponse.equals("3")) {
-                savingsAccount.start();
+                this.savingsAccount.start();
             } else {
                 System.out.println("Invalid Input, please try again.");
             }
@@ -89,14 +90,12 @@ public class Customer extends AbstractUser {
         //if PIN is not 4 numbers, tell user and re-prompt
         if (!PIN.matches("^\\d{4}$")) {
             if (printError("PIN must be 4 numberic digits.")) {
-                changePIN();
+                this.changePIN();
             }
             return;
         }
 
         printSeparator();
-
-        //do PIN checks
 
         System.out.println("PIN is now " + PIN + ".");
 
@@ -108,7 +107,7 @@ public class Customer extends AbstractUser {
     // begin AbstractUser implementation
 
     public String getReport() {
-        return "User: " + getUserName() + ", Checking: $" + checkingsAccount.getBalanceString() + ", Savings: $" + savingsAccount.getBalanceString();
+        return "User: " + this.getUserName() + ", Checking: $" + this.checkingsAccount.getBalanceString() + ", Savings: $" + this.savingsAccount.getBalanceString();
     }
 
     // end AbstractUser implementation

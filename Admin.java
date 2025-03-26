@@ -17,7 +17,7 @@ public class Admin extends AbstractUser {
 
         printSeparator();
 
-        System.out.println("Welcome " + getUserName() + "!");
+        System.out.println("Admin Menu");
         System.out.println();
         System.out.println("0) Exit");
         System.out.println("1) Full Customer Report");
@@ -39,7 +39,7 @@ public class Admin extends AbstractUser {
     // begin AbstractUser implementation
 
     public String getReport() {
-        return "Admin: " + getUserName();
+        return "Admin: " + this.getUserName();
     }
 
     // end AbstractUser implementation

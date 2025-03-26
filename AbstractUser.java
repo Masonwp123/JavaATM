@@ -1,6 +1,7 @@
 import java.util.*;
+import java.io.*;
 
-public abstract class AbstractUser implements IHasMenu {
+public abstract class AbstractUser implements IHasMenu, Serializable {
 
     private String userName;
     private String PIN;
@@ -32,7 +33,7 @@ public abstract class AbstractUser implements IHasMenu {
     }
 
     public String getPIN() {
-        return PIN;
+        return this.PIN;
     }
 
     public void setPIN(String PIN) {

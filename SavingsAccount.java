@@ -1,6 +1,7 @@
 import java.util.*;
+import java.io.*;
 
-public class SavingsAccount extends CheckingsAccount {
+public class SavingsAccount extends CheckingsAccount implements Serializable {
 
     private double interestRate;
 
@@ -35,42 +36,4 @@ public class SavingsAccount extends CheckingsAccount {
         this.interestRate = interestRate;
     }
 
-    //test implementation
-    public String menu() {
-
-        printSeparator();
-
-        System.out.println("Savings Account");
-        System.out.println();
-        System.out.println("0) Exit");
-        System.out.println("1) Check Balance");
-        System.out.println("2) Make Deposit");
-        System.out.println("3) Make Withdrawal");
-        System.out.println();
-        System.out.print("Action (0-3): ");
-
-        Scanner input = new Scanner(System.in);
-
-        return input.nextLine();
-    }
-
-    public void start() {
-        boolean keepGoing = true;
-        while (keepGoing) {
-            String reponse = menu();
-            if (reponse.equals("0")) {
-                keepGoing = false;
-            } else if (reponse.equals("1")) {
-                printSeparator();
-                checkBalance();
-                waitForNextInput();
-            } else if (reponse.equals("2")) {
-                makeDeposit();
-            } else if (reponse.equals("3")) {
-                makeWithdrawal();
-            } else {
-                System.out.println("Invalid Input, please try again.");
-            }
-        }
-    }
 }

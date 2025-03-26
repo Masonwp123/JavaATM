@@ -1,7 +1,7 @@
 import java.util.*;
-import java.util.function.Supplier;
+import java.io.*;
 
-public class CheckingsAccount implements IHasMenu {
+public class CheckingsAccount implements IHasMenu, Serializable {
 
     private double balance;
 
@@ -46,12 +46,12 @@ public class CheckingsAccount implements IHasMenu {
                 keepGoing = false;
             } else if (reponse.equals("1")) {
                 printSeparator();
-                checkBalance();
+                this.checkBalance();
                 waitForNextInput();
             } else if (reponse.equals("2")) {
-                makeDeposit();
+                this.makeDeposit();
             } else if (reponse.equals("3")) {
-                makeWithdrawal();
+                this.makeWithdrawal();
             } else {
                 System.out.println("Invalid Input, please try again.");
             }
@@ -77,7 +77,7 @@ public class CheckingsAccount implements IHasMenu {
     }
 
     public void checkBalance() {
-        System.out.println("Account has $" + getBalanceString() + ".");        
+        System.out.println("Account has $" + this.getBalanceString() + ".");        
     }
 
     protected double getDouble(String message) {
@@ -93,7 +93,7 @@ public class CheckingsAccount implements IHasMenu {
         } catch (NumberFormatException exception) {
             //retry getting a double
             if (printError("Invalid Input, please try again.")) {
-                return getDouble(message);
+                return this.getDouble(message);
             }
             return 0.0;
         }
@@ -105,13 +105,13 @@ public class CheckingsAccount implements IHasMenu {
 
     void makeDeposit() {
 
-        double deposit = getDouble("How much do you want to Deposit? (0 to cancel): ");
+        double deposit = this.getDouble("How much do you want to Deposit? (0 to cancel): ");
 
         if (deposit == 0.0) {
             return;
         } else if (deposit < 0.0) {
             if (printError("Deposit cannot be negative.")) {
-                makeDeposit();
+                this.makeDeposit();
             }
             return;
         }
@@ -122,7 +122,7 @@ public class CheckingsAccount implements IHasMenu {
         System.out.println("Deposit of $" + String.valueOf(deposit) + " made.");
         System.out.println();
 
-        checkBalance();
+        this.checkBalance();
 
         waitForNextInput();
 
@@ -130,18 +130,18 @@ public class CheckingsAccount implements IHasMenu {
 
     double makeWithdrawal() {
         
-        double withdrawal = getDouble("How much do you want to Withdraw? (0 to cancel): ");
+        double withdrawal = this.getDouble("How much do you want to Withdraw? (0 to cancel): ");
 
         if (withdrawal == 0.0) {
             return 0.0;
         } else if (withdrawal < 0.0) {
             if (printError("Withdrawal cannot be negative.")) {
-                return makeWithdrawal();
+                return this.makeWithdrawal();
             }
             return 0.0;
         }
 
-        if (withdrawal > balance) {
+        if (withdrawal > this.balance) {
             System.out.println("Not enough money in account, please try again.");
             return 0.0;
         }
@@ -152,7 +152,7 @@ public class CheckingsAccount implements IHasMenu {
         System.out.println("Withdrawal of $" + String.valueOf(withdrawal) + " made.");
         System.out.println();
 
-        checkBalance();
+        this.checkBalance();
 
         waitForNextInput();
 
