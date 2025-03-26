@@ -73,14 +73,7 @@ public class CheckingsAccount implements IHasMenu {
     }
 
     public void setBalance(double balance) {
-        if (balance < 0.0) {
-            System.out.println("Balance cannot be negative.");
-            return;
-        }
         this.balance = balance;
-        printSeparator();
-        checkBalance();
-        waitForNextInput();
     }
 
     public void checkBalance() {
@@ -98,9 +91,11 @@ public class CheckingsAccount implements IHasMenu {
         try {
             return Double.parseDouble(string);
         } catch (NumberFormatException exception) {
-            printError("Invalid Input, please try again.");
             //retry getting a double
-            return getDouble(message);
+            if (printError("Invalid Input, please try again.")) {
+                return getDouble(message);
+            }
+            return 0.0;
         }
     }
 
@@ -115,8 +110,9 @@ public class CheckingsAccount implements IHasMenu {
         if (deposit == 0.0) {
             return;
         } else if (deposit < 0.0) {
-            printError("Deposit cannot be negative.");
-            makeDeposit();
+            if (printError("Deposit cannot be negative.")) {
+                makeDeposit();
+            }
             return;
         }
 
@@ -139,8 +135,10 @@ public class CheckingsAccount implements IHasMenu {
         if (withdrawal == 0.0) {
             return 0.0;
         } else if (withdrawal < 0.0) {
-            printError("Withdrawal cannot be negative.");
-            return makeWithdrawal();
+            if (printError("Withdrawal cannot be negative.")) {
+                return makeWithdrawal();
+            }
+            return 0.0;
         }
 
         if (withdrawal > balance) {

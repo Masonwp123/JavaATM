@@ -24,11 +24,19 @@ interface IHasMenu {
         return input.nextLine();
     }
 
-    default void printError(String message) {
+    default boolean askToTryAgain() {
+        printSeparator();
+        System.out.print("Would you like to try again (y/n)? ");
+        
+        Scanner input = new Scanner(System.in);
+        return input.nextLine().equals("y");
+    }
+
+    default boolean printError(String message) {
         printSeparator();
         System.out.print("ERROR: ");
         System.out.println(message);
-        waitForNextInput();
+        return askToTryAgain();
     }
 
 }

@@ -2,16 +2,34 @@ import java.util.*;
 
 public class Customer extends AbstractUser {
 
-    private final CheckingsAccount checkingsAccount = new CheckingsAccount();
-    private final SavingsAccount savingsAccount = new SavingsAccount();
+    private final CheckingsAccount checkingsAccount;
+    private final SavingsAccount savingsAccount;
+
+    public Customer(String userName, String PIN) {
+        super(userName, PIN);
+        checkingsAccount = new CheckingsAccount();
+        savingsAccount = new SavingsAccount();
+    }
 
     public Customer() {
-        super("Alice", "0000");
+        this("Alice", "0000");
     }
 
     public static void main(String[] args) {
         Customer customer  = new Customer();
         customer.start();
+    }
+
+    /**
+     * Getters
+     */
+
+    public CheckingsAccount getCheckingsAccount() {
+        return checkingsAccount;
+    }
+
+    public SavingsAccount getSavingsAccount() {
+        return savingsAccount;
     }
 
     // begin IHasMenu implementation
@@ -70,8 +88,9 @@ public class Customer extends AbstractUser {
 
         //if PIN is not 4 numbers, tell user and re-prompt
         if (!PIN.matches("^\\d{4}$")) {
-            printError("PIN must be 4 numberic digits.");
-            changePIN();
+            if (printError("PIN must be 4 numberic digits.")) {
+                changePIN();
+            }
             return;
         }
 
@@ -89,7 +108,7 @@ public class Customer extends AbstractUser {
     // begin AbstractUser implementation
 
     public String getReport() {
-        return "";
+        return "User: " + getUserName() + ", Checking: $" + checkingsAccount.getBalanceString() + ", Savings: $" + savingsAccount.getBalanceString();
     }
 
     // end AbstractUser implementation

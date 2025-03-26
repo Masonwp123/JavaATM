@@ -218,6 +218,11 @@ void setPIN(PIN):
 
 ### public class Customer extends AbstractUser
 
+**Customer**
+Customer():
+    call super constructor
+    initialize savings and checkings accounts
+
 **main**
 ```
 public static void main(String[] args):
@@ -266,4 +271,158 @@ void changePIN():
 
 **getReport**
 ```
+String getReport():
+    return "User: " + call getUserName() + ", Checkings: $" + call checkingsAccount.getBalanceString() + ", Savings: $" + call savingsAccount.getBalanceString()
+```
+
+### public class Admin extends AbstractUser
+
+**Admin()**
+```
+Admin():
+    call super constructor
+```
+
+**menu**
+```
+print "Checkings Account"
+    print empty line
+    print "0) Exit"
+    print "1) Full Customer Report"
+    print "2) Add User"
+    print "3) Apply Interest to savings accounts"
+    print empty line
+    print "Action (0-3): "
+
+    return input as string
+```
+
+**getReport**
+```
+String getReport():
+    return "Admin: " + call getUserName()
+```
+
+### public class Bank
+
+**Bank()**
+```
+Bank():
+initialize Admin and customers
+load user data
+start
+save user data
+```
+
+**main**
+```
+public static void main(String[] args):
+    create new Bank
+```
+
+**loadSampleCustomers**
+```
+public void loadSampleCustomers():
+    add new Customer "Alice" "0000" to customers
+    add new Customer "Bob" "0001" to customers
+    add new Customer "Cindy" "0002" to customers
+```
+
+**loadCustomers**
+```
+```
+
+**saveCustomers**
+```
+```
+
+**fullCustomerReport**
+```
+private void fullCustomerReport():
+    for each customer:
+        call customer->getReport()
+        print report for customer
+```
+
+**addUser**
+```
+private void addUser():
+    prompt user for name and PIN
+    create and add customer to end of array
+```
+
+**setInterest**
+```
+private void setInterest():
+    get double from input
+    convert to double
+    for each customer:
+        set customer savings accoutn interest rate
+```
+
+**applyInterest**
+```
+private void applyInterest():
+    for each customer:
+        call customer.savingsAccount.calcInterest()
+```
+
+**loginAsAdmin**
+```
+private void loginAsAdmin():
+    prompt for username and PIN
+    check for PIN possibility
+    if username and PIN match login of admin
+```
+
+**loginAsCustomer**
+```
+private void loginAsCustomer():
+    prompt for username and PIN
+    check for PIN possibility
+    search array if username and PIN match login
+```
+
+**menu**
+```
+protected void menu():
+    print "ATM Menu"
+    print empty line
+    print "0) Exit System"
+    print "1) Login as Admin"
+    print "2) Login as Customer"
+    print empty line
+    print "Action (0-2): "
+
+    return input as string
+```
+
+**start**
+```
+void start():
+    keepGoing = true
+    while keepGoing:
+        String response = call menu()
+        if response is "0":
+            keepGoing = false
+        else if reponse is "1":
+            call loginAsAdmin()
+        else if reponse is "2":
+            call loginAsCustomer()
+```
+
+**startAdmin**
+```
+void start():
+    keepGoing = true
+    while keepGoing:
+        String response = call admin.menu()
+        if response is "0":
+            keepGoing = false
+        else if reponse is "1":
+            call fullCustomerReport()
+        else if reponse is "2":
+            call addUser()
+        else if response is "3":
+            call applyInterest()
 ```

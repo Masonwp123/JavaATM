@@ -31,18 +31,7 @@ public class SavingsAccount extends CheckingsAccount {
         waitForNextInput();
     }
 
-    public void setInterestRate() {
-
-        double interestRate = getDouble("What would you like to set the interest rate to? (0 to cancel): ");
-
-        if (interestRate == 0.0) {
-            return;
-        } else if (interestRate < 0.0) {
-            printError("Interest Rate cannot be negative.");
-            setInterestRate();
-            return;
-        }
-
+    public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
     }
 
@@ -57,11 +46,8 @@ public class SavingsAccount extends CheckingsAccount {
         System.out.println("1) Check Balance");
         System.out.println("2) Make Deposit");
         System.out.println("3) Make Withdrawal");
-        System.out.println("4) Get Interest");
-        System.out.println("5) Set Interest");
-        System.out.println("6) Apply Interest");
         System.out.println();
-        System.out.print("Action (0-6): ");
+        System.out.print("Action (0-3): ");
 
         Scanner input = new Scanner(System.in);
 
@@ -82,12 +68,6 @@ public class SavingsAccount extends CheckingsAccount {
                 makeDeposit();
             } else if (reponse.equals("3")) {
                 makeWithdrawal();
-            } else if (reponse.equals("4")) {
-                getInterestRate();
-            } else if (reponse.equals("5")) {
-                setInterestRate();
-            } else if (reponse.equals("6")) {
-                calcInterest();
             } else {
                 System.out.println("Invalid Input, please try again.");
             }
