@@ -5,7 +5,7 @@ public class Bank implements IHasMenu {
 
     private final Admin admin;
     private CustomerList customers;
-    private final String fileName = "data.txt";
+    private final String fileName = "data.dat";
 
     public Bank() {
         this.admin = new Admin();
