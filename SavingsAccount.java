@@ -5,13 +5,18 @@ public class SavingsAccount extends CheckingsAccount implements Serializable {
 
     private double interestRate;
 
-    // Default rate of 5%
-    public SavingsAccount() {
-        this(0.05);
+    public SavingsAccount(double initialBalance, double interestRate) {
+        super(initialBalance);
+        this.interestRate = interestRate;
     }
 
+    // Default rate of 5%
     public SavingsAccount(double initialBalance) {
-        super(initialBalance);
+        this(initialBalance, 0.05);
+    }
+
+    public SavingsAccount() {
+        this(0.0);
     }
 
     public static void main(String[] args) {

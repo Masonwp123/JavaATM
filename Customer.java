@@ -6,10 +6,14 @@ public class Customer extends AbstractUser implements Serializable {
     private final CheckingsAccount checkingsAccount;
     private final SavingsAccount savingsAccount;
 
-    public Customer(String userName, String PIN) {
+    public Customer(String userName, String PIN, double checkingsBalance, double savingsBalance) {
         super(userName, PIN);
-        this.checkingsAccount = new CheckingsAccount();
-        this.savingsAccount = new SavingsAccount();
+        this.checkingsAccount = new CheckingsAccount(checkingsBalance);
+        this.savingsAccount = new SavingsAccount(savingsBalance);
+    }
+
+    public Customer(String userName, String PIN) {
+        this(userName, PIN, 0.0, 0.0);
     }
 
     public Customer() {

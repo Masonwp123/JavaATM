@@ -5,12 +5,12 @@ public class CheckingsAccount implements IHasMenu, Serializable {
 
     private double balance;
 
-    public CheckingsAccount() {
-        this(0.0);
-    }
-
     public CheckingsAccount(double initialBalance) {
         this.balance = initialBalance;
+    }
+
+    public CheckingsAccount() {
+        this(0.0);
     }
 
     public static void main(String[] args) {

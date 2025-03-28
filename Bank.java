@@ -85,7 +85,7 @@ public class Bank implements IHasMenu {
      */
 
     public void loadSampleCustomers() {
-        this.customers.add(new Customer("Alice", "0000"));
+        this.customers.add(new Customer("Alice", "0000", 1000.0, 1000.0));
         this.customers.add(new Customer("Bob", "0001"));
         this.customers.add(new Customer("Cindy", "0002"));
     }
