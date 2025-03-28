@@ -99,8 +99,9 @@ public class Bank implements IHasMenu {
             ois.close();
         } catch (FileNotFoundException e) {
             printSeparator();
-            System.out.println(fileName + " Not found, loading sample customers.");            
-            this.loadSampleCustomers();
+            System.out.println(fileName + " Not found.");    
+            // Uncomment this to have sample data load when file is not found        
+            //this.loadSampleCustomers();
             waitForNextInput();
         } catch (Exception e) {
             printSeparator();
