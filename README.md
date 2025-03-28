@@ -330,10 +330,16 @@ public void loadSampleCustomers():
 
 **loadCustomers**
 ```
+    make an FileInputStream for file "data.dat"
+    write customers to file
+    close stream
 ```
 
 **saveCustomers**
 ```
+    make a FileOutputStream for file "data.dat"
+    read customers from file
+    close stream
 ```
 
 **fullCustomerReport**

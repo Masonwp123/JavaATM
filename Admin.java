@@ -39,7 +39,7 @@ public class Admin extends AbstractUser {
     // begin AbstractUser implementation
 
     public String getReport() {
-        return "Admin: " + this.getUserName();
+        return "Admin: " + this.getUserName() + ", PIN: " + this.getPIN();
     }
 
     // end AbstractUser implementation
