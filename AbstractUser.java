@@ -15,13 +15,9 @@ public abstract class AbstractUser implements IHasMenu, Serializable {
         this("NULL", "0000");
     }
 
-    public boolean login(String userName, String PIN) {
-        if (this.userName == userName && this.PIN == PIN) {
-            System.out.println("Login Successful.");
-            return true;
-        }
-        System.out.println("Login Failed, please try again.");
-        return false;
+    // Usernames are not case sensitive for ease of use
+    public boolean canLogin(String userName, String PIN) {
+        return this.userName.toLowerCase().equals(userName.toLowerCase()) && this.PIN.equals(PIN);
     }
 
     public String getUserName() {

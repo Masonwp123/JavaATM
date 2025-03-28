@@ -155,6 +155,9 @@ public class Bank implements IHasMenu {
 
         String userName = input.nextLine();
 
+        //Leave only the first character of userName capitalized
+        userName = userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
+
         //Admin cannot be used
         if (userName.toLowerCase().equals("admin")) {
             if (printError("Admin is a reserved name and cannot be used.")) {
@@ -273,7 +276,7 @@ public class Bank implements IHasMenu {
         }
 
         //start as admin if credentials are correct, otherwise give error message
-        if (admin.getUserName().equals(userName) && admin.getPIN().equals(PIN)) {
+        if (admin.canLogin(userName, PIN)) {
             this.adminStart();
             return;
         }
@@ -310,7 +313,7 @@ public class Bank implements IHasMenu {
 
         for (Customer customer : customers) {
             //start as customer if credentials are correct, otherwise give error message
-            if (customer.getUserName().equals(userName) && customer.getPIN().equals(PIN)) {
+            if (customer.canLogin(userName, PIN)) {
                 customer.start();
                 return;
             }
