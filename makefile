@@ -19,18 +19,6 @@ IHasMenu.class: IHasMenu.java
 Bank.class: Bank.java IHasMenu.class Admin.class Customer.class
 	javac -g Bank.java
 
-testAdmin: Admin.class
-	java Admin
-
-testCustomer: Customer.class
-	java Customer
-
-testCheckings: CheckingsAccount.class
-	java CheckingsAccount
-
-testSavings: SavingsAccount.class
-	java SavingsAccount
-
 run: Bank.class
 	java Bank
 
